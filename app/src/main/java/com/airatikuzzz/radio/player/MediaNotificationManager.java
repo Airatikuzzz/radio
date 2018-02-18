@@ -38,7 +38,6 @@ public class MediaNotificationManager {
         this.service = service;
         this.resources = service.getResources();
         strAppName = resources.getString(R.string.app_name);
-
         notificationManager = NotificationManagerCompat.from(service);
     }
 
@@ -79,11 +78,13 @@ public class MediaNotificationManager {
             manager.createNotificationChannel(channel);
         }
 
+        if (mCurrentStation.getIcon()!=null) largeIcon = mCurrentStation.getIcon();
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder(service, PRIMARY_CHANNEL)
                 .setAutoCancel(false)
                 .setContentTitle(mCurrentStation.getTitle())
                 .setContentText(strAppName)
-                .setLargeIcon(mCurrentStation.getIcon())
+                .setLargeIcon(largeIcon)
                 .setContentIntent(pendingIntent)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setSmallIcon(android.R.drawable.stat_sys_headset)

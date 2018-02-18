@@ -6,12 +6,12 @@
     android:layout_margin="5dp">
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:text="Category"
         android:textSize="@dimen/tab_label"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingRight="10dp"
+        android:paddingTop="@dimen/padding_category"
+        android:paddingBottom="@dimen/padding_category"
+        android:paddingRight="@dimen/padding_category"
         android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
         android:id="@+id/category_title"/>
 </LinearLayout>

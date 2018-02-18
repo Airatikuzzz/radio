@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.airatikuzzz.radio.ItemMovedEvent;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -15,9 +16,32 @@ public class RadioStation  {
     String url;
     @SerializedName("name")
     String title;
-   // @SerializedName("icon")
+    @SerializedName("iconUrl")
     String iconUrl;
+    @SerializedName("info")
+    String info;
+
+    public RadioStation() {
+    }
+
+    public RadioStation(String url, String title, String info, String iconUrl, Bitmap icon) {
+        this.url = url;
+        this.title = title;
+        this.iconUrl = iconUrl;
+        this.info = info;
+        this.icon = icon;
+    }
+
+    @SerializedName("icon")
     Bitmap icon;
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
 
     public Bitmap getIcon() {
         return icon;
@@ -48,10 +72,6 @@ public class RadioStation  {
     }
 
     public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public RadioStation(String title) {
         this.title = title;
     }
 

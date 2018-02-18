@@ -1,5 +1,5 @@
-<FrameLayout
-    android:layout_height="match_parent"
+<RelativeLayout
+    android:layout_height="wrap_content"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- TODO: Update blank fragment layout -->
@@ -10,17 +10,18 @@
                                         android:layout_height="wrap_content"
                                         android:elevation="5dp"
                                         app:cardElevation="5dp"
-                                        app:contentPadding="5dp"
-                                        tools:context="com.mcakir.radio.fragments.AllStationsFragment">
+                                        tools:context="com.airatikuzzz.radio.fragments.AllStationsFragment">
     <ExpandableListView
         android:id="@+id/expListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@android:color/darker_gray"
-        android:dividerHeight="1dp"
-        android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"/>
+        android:dividerHeight="0.75dp"
+        android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
+        />
+
     </android.support.v7.widget.CardView>
 
-</FrameLayout>
+</RelativeLayout>
 
 

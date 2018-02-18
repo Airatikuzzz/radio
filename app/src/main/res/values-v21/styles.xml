@@ -7,4 +7,7 @@
         <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
         <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
     </style>
+    <style name="customButtonTheme" parent="Widget.AppCompat.Button.Colored">
+        <item name="background">@drawable/border_button</item>
+    </style>
 </resources>
