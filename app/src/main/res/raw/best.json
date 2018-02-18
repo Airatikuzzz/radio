@@ -1,0 +1,56 @@
+[
+  {
+    "name": "﻿Русское Радио ",
+    "url":"http://listen.vdfm.ru:8000/rusradio",
+    "iconUrl":"pop/105_7.png",
+    "info":"http://rusradio.ru/"
+  },
+  {
+    "name": "Европа Плюс ",
+    "url":"http://ep128.hostingradio.ru:8030/ep128",
+    "iconUrl":"pop/106_2.png",
+    "info":"http://europaplus.ru/"
+  },
+  {
+    "name": "Радио Energy ",
+    "url":"http://ic2.101.ru:8000/v1_1",
+    "iconUrl":"pop/104_2.png",
+    "info":"http://energyfm.ru/"
+  },
+  {
+    "name": "Радио Маяк",
+    "url":"http://icecast.vgtrk.cdnvideo.ru/mayakfm_mp3_192kbps",
+    "iconUrl":"pop/103_4.png",
+    "info":"http://radiomayak.ru/"
+  },
+  {
+    "name": "Авторадио ",
+    "url":"http://ic4.101.ru:8000/v3_1",
+    "iconUrl":"pop/90_3.png",
+    "info":"http://avtoradio.ru/"
+  },
+  {
+    "name": "Татар радиосы",
+    "url":"http://stream.tatarradio.ru:2068/;stream/1",
+    "iconUrl":"pop/tatar.png",
+    "info":"http://tatarradio.ru/"
+  },
+  {
+    "name": "Юмор ФМ",
+    "url":"http://ic4.101.ru:8000/v5_1",
+    "iconUrl":"pop/yumorfm.png",
+    "info":"http://veseloeradio.ru/"
+  },
+  {
+    "name": "DFM",
+    "url":"http://78.138.169.182:8000/dfm",
+    "iconUrl":"pop/dfm.png",
+    "info":"http://dfm.ru/"
+  },
+  {
+    "name": "Ретро ФМ. ",
+    "url":"http://retroserver.streamr.ru:8043/retro128",
+    "iconUrl":"pop/retro.png",
+    "info":"http://retrofm.ru/"
+  }
+]

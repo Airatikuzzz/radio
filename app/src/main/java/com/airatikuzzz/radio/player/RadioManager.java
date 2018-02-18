@@ -45,7 +45,6 @@ public class RadioManager {
         return service.isPlaying();
     }
 
-
     public void bind() {
         Log.d("lol", "RadioManager.bind");
 
@@ -61,6 +60,10 @@ public class RadioManager {
         Log.d("lol", "RadioManager.unbind");
 
         context.unbindService(serviceConnection);
+    }
+
+    public void stopPlayer(){
+        service.stopTS();
     }
 
     private ServiceConnection serviceConnection = new ServiceConnection() {

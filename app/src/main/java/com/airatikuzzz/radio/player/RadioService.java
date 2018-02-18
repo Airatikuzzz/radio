@@ -21,6 +21,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.airatikuzzz.radio.fragments.AllStationsFragment;
+import com.airatikuzzz.radio.interfaces.OnItemClickCallback;
 import com.airatikuzzz.radio.stations.RadioStation;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayerFactory;
@@ -41,7 +42,8 @@ import com.airatikuzzz.radio.R;
 
 import org.greenrobot.eventbus.EventBus;
 
-public class RadioService extends Service implements Player.EventListener, AudioManager.OnAudioFocusChangeListener, AllStationsFragment.IonClick {
+public class RadioService extends Service implements Player.EventListener, AudioManager.OnAudioFocusChangeListener, OnItemClickCallback {
+
 
     public RadioStation mCurrentStation;
 
@@ -78,9 +80,10 @@ public class RadioService extends Service implements Player.EventListener, Audio
     private String streamUrl;
 
     @Override
-    public void onClickItem(RadioStation station) {
+    public void onClickItem(RadioStation station, int code) {
         Log.d("kek", "clicked in radioservice.java");
         mCurrentStation = station;
+        notificationManager.startNotify(status);
     }
 
     public class LocalBinder extends Binder {
@@ -211,24 +214,18 @@ public class RadioService extends Service implements Player.EventListener, Audio
 
         int result = audioManager.requestAudioFocus(this, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
         if(result != AudioManager.AUDIOFOCUS_REQUEST_GRANTED){
-
             stop();
-
             return START_NOT_STICKY;
         }
-
         if(action.equalsIgnoreCase(ACTION_PLAY)){
 
             transportControls.play();
 
         } else if(action.equalsIgnoreCase(ACTION_PAUSE)) {
-
             transportControls.pause();
 
         } else if(action.equalsIgnoreCase(ACTION_STOP)){
-
             transportControls.stop();
-
         }
 
         return START_NOT_STICKY;
@@ -237,6 +234,7 @@ public class RadioService extends Service implements Player.EventListener, Audio
     @Override
     public boolean onUnbind(Intent intent) {
         serviceInUse = false;
+        Log.d("kek3", "in onUnbind");
 
         if(status.equals(PlaybackStatus.IDLE))
             stopSelf();
@@ -324,7 +322,6 @@ public class RadioService extends Service implements Player.EventListener, Audio
                 status = PlaybackStatus.IDLE;
                 break;
         }
-
         if(!status.equals(PlaybackStatus.IDLE))
             notificationManager.startNotify(status);
 
@@ -474,5 +471,8 @@ public class RadioService extends Service implements Player.EventListener, Audio
 
         }
 
+    }
+    public void stopTS(){
+        transportControls.stop();
     }
 }

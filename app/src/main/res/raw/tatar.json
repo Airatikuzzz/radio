@@ -1,0 +1,26 @@
+﻿[
+{
+ "name": "﻿Татар радиосы",
+ "url":"http://stream.tatarradio.ru:2068/;stream/1",
+ "iconUrl":"tatar/tatar.png",
+ "info":"http://tatarradio.ru/" 
+},
+{
+ "name": "Радио Курай",
+ "url":"http://av.bimradio.ru:8066/kurai_mp3?77",
+ "iconUrl":"tatar/kurai.png",
+ "info":"http://tataram.ru/kuray/" 
+},
+{
+ "name": "Тартип",
+ "url":"http://stream01.hitv.ru:8000/tartip-fm-64kb",
+ "iconUrl":"tatar/tartip.png",
+ "info":"http://www.tartip.ru/" 
+},
+{
+ "name": "Татарстан Радиосы",
+ "url":"http://94.180.249.163:8000/tatar64kbps.mp3",
+ "iconUrl":"tatar/tatarstan.png",
+ "info":"http://radiotatarstana.ru/" 
+}
+ ]

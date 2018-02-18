@@ -3,31 +3,39 @@ package com.airatikuzzz.radio.fragments;
 
 
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.SearchView;
 
+import com.airatikuzzz.radio.ItemMovedEvent;
+import com.airatikuzzz.radio.Stroka;
+import com.airatikuzzz.radio.interfaces.OnItemClickCallback;
 import com.airatikuzzz.radio.R;
 import com.airatikuzzz.radio.player.RadioManager;
 import com.airatikuzzz.radio.stations.RadioStation;
 import com.airatikuzzz.radio.stations.StationsAdapter;
 import com.airatikuzzz.radio.stations.StationsLab;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
-import java.io.IOException;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,11 +43,11 @@ import java.util.List;
 
 public class AllStationsFragment extends Fragment {
     ListView mListView;
-    IonClick mIonClick;
-    IonClick mIonClickForService;
+    OnItemClickCallback mOnItemClickCallback;
+    OnItemClickCallback mOnItemClickCallbackForService;
 
     ExpandableListView expListView;
-    ExpandableListAdapter expListAdapter;
+    StationsAdapter expListAdapter;
 
 
     List<String> expListTitle;
@@ -52,21 +60,19 @@ public class AllStationsFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mIonClick = (IonClick) getActivity();
-//        Log.d("kek", mIonClickForService.toString());
+        mOnItemClickCallback = (OnItemClickCallback) getActivity();
+        Log.d("kek", "now");
     }
 
-    public interface IonClick{
-        void onClickItem(RadioStation station);
-    }
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_all_stations, container, false);
 
         expListView = (ExpandableListView) v.findViewById(R.id.expListView);
-        expListDetail = new StationsLab(getContext()).getExpDetails();
+        expListDetail = StationsLab.get(getContext()).getExpDetails();
+
 
         expListTitle = new ArrayList<>(expListDetail.keySet());
         expListAdapter = new StationsAdapter(getContext(), expListTitle, expListDetail);
@@ -97,14 +103,29 @@ public class AllStationsFragment extends Fragment {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
-                mIonClickForService = RadioManager.getService();
-                RadioStation r = expListDetail.get(expListTitle.get(groupPosition))
+                mOnItemClickCallbackForService = RadioManager.getService();
+                final RadioStation r = expListDetail.get(expListTitle.get(groupPosition))
                         .get(childPosition);
-                loadBitmap("https://image.ibb.co/butrtb/104_2.png");
-                r.setIcon(icon);
-                mIonClick.onClickItem(r);
-                mIonClickForService.onClickItem(r);
-                Log.d("kek", "clicked on allsttions" + r.getTitle());
+                final Bitmap icon;
+
+                FirebaseStorage storage = FirebaseStorage.getInstance();
+                StorageReference storageRef = storage.getReference().child(r.getIconUrl());
+                Glide
+                        .with(getContext())
+                        .using(new FirebaseImageLoader())
+                        .load(storageRef)
+                        .asBitmap()
+                        .into(new SimpleTarget<Bitmap>(52,52) {
+                            @Override
+                            public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
+                                r.setIcon(resource); // Possibly runOnUiThread()
+                                mOnItemClickCallback.onClickItem(r,0);
+                                mOnItemClickCallbackForService.onClickItem(r, 0);
+                            }
+                        });
+
+                mOnItemClickCallback.onClickItem(r, 1);
+                mOnItemClickCallbackForService.onClickItem(r, 0);
                 return false;
             }
         });
@@ -112,39 +133,28 @@ public class AllStationsFragment extends Fragment {
         return v;
     }
 
-    private Target loadtarget;
-    private Bitmap icon;
-
-    public void loadBitmap(String url) {
-
-        if (loadtarget == null) loadtarget = new Target() {
-            @Override
-            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                // do something with the Bitmap
-                handleLoadedBitmap(bitmap);
-            }
-
-            @Override
-            public void onBitmapFailed(Drawable errorDrawable) {
-
-            }
-
-            @Override
-            public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-            }
-
-        };
-
-        Picasso.with(getContext()).load(url).into(loadtarget);
+    @Subscribe
+    public void onEvent(Stroka query){
+        expListAdapter.filterData(query.getQuery());
+        expandAll();
     }
 
-    public void handleLoadedBitmap(Bitmap b) {
-        // do something here
-        icon = b;
+    private void expandAll() {
+        int count = expListAdapter.getGroupCount();
+        for (int i = 0; i < count; i++){
+            expListView.expandGroup(i);
+        }
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+
     }
 
-
-
-
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
 }

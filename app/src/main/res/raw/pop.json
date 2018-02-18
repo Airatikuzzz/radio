@@ -1,0 +1,80 @@
+﻿[
+  {
+    "name": "﻿Хит FM",
+    "url":"http://icecast.radiohitfm.cdnvideo.ru/st13.mp3",
+    "iconUrl":"real_pop/hit.png",
+    "info":"https://hitfm.ru/"
+  },
+  {
+    "name": "Дорожное радио",
+    "url":"http://dorognoe.hostingradio.ru:8000/dorognoe",
+    "iconUrl":"real_pop/dorozhnoe.png",
+    "info":"https://dorognoe.ru/"
+  },
+  {
+    "name": "Радио Русские Песни",
+    "url":"http://listen.rusongs.ru:8005/ru-mp3-128",
+    "iconUrl":"real_pop/russkie_pesni.png",
+    "info":"http://www.rusongs.ru/"
+  },
+  {
+    "name": "Зайцев ФМ",
+    "url":"https://zaycevfm.cdnvideo.ru/ZaycevFM_pop_128.mp3",
+    "iconUrl":"real_pop/zaycev.png",
+    "info":"http://www.zaycev.fm/"
+  },
+  {
+    "name": "Радио Ваня",
+    "url":"http://188.93.22.163:8080/vanya_vk_com_app2462?type=.mp3",
+    "iconUrl":"real_pop/vanya.png",
+    "info":"http://www.radiovanya.ru/"
+  },
+  {
+    "name": "Радио 7",
+    "url":"http://variant.fm:8000/RADIO7-192",
+    "iconUrl":"real_pop/seven.png",
+    "info":"http://www.radio7.ru/"
+  },
+  {
+    "name": "Русский Хит",
+    "url":"http://ruhit.imgradio.pro/RusHit48",
+    "iconUrl":"real_pop/rushit.png",
+    "info":"http://www.ruhit.fm/"
+  },
+  {
+    "name": "Радио Maximum",
+    "url":"https://rmgradio.gcdn.co/max_m.aac",
+    "iconUrl":"real_pop/maximum.png",
+    "info":"http://www.maximum.ru/"
+  },
+  {
+    "name": "Романтика",
+    "url":"http://ic3.101.ru:8000/v4_1?",
+    "iconUrl":"real_pop/romantika.png",
+    "info":"http://www.radioromantika.ru/"
+  },
+  {
+    "name": "Радио Монте-Карло",
+    "url":"http://icecast.radiomontecarlo.cdnvideo.ru:8000/mc_m.aac",
+    "iconUrl":"real_pop/monte_karlo.png",
+    "info":"http://montecarlo.ru/"
+  },
+  {
+    "name": "Мега Радио",
+    "url":"http://mega.imgradio.pro/MegaRadio48",
+    "iconUrl":"real_pop/mega.png",
+    "info":"http://megaradio.pro/"
+  },
+  {
+    "name": "Like FM",
+    "url":"http://ic3.101.ru:8000/v12_1",
+    "iconUrl":"real_pop/like.png",
+    "info":"https://www.radiolikefm.ru/"
+  },
+  {
+    "name": "ТНТ MUSIC RADIO",
+    "url":"http://tntradio.hostingradio.ru:8027/tntradio128.mp3",
+    "iconUrl":"real_pop/tntmusic.png",
+    "info":"https://tntmusic.ru/616-teper-tnt-music-eshyo-i-na-radio/"
+  }
+]

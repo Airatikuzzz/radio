@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1035274989579",
+    "firebase_url": "https://radio-online-b4782.firebaseio.com",
+    "project_id": "radio-online-b4782",
+    "storage_bucket": "radio-online-b4782.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035274989579:android:559ea6e3ab213656",
+        "android_client_info": {
+          "package_name": "com.airatikuzzz.radio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1035274989579-othj83hv4cd61f94mmso9r5nhmpp5kbg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.airatikuzzz.radio",
+            "certificate_hash": "be1423de8e7a8eedd7730002d1375d8d0d5a3754"
+          }
+        },
+        {
+          "client_id": "1035274989579-mfmd08j6ib5m5hfqb14ffc8i549shg4s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZEvqIClmyPc6VUfBTnBzo7ySb9Oqa3rU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1035274989579-mfmd08j6ib5m5hfqb14ffc8i549shg4s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
