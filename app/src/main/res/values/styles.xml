@@ -18,9 +18,12 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="MyMaterialTheme" parent="MyMaterialTheme.Base">
-
+        <item name="borderlessButtonStyle">@style/mybtnCustom</item>
     </style>
 
+    <style name="mybtnCustom" parent="Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:textColorAlertDialogListItem">@color/colorPrimary</item>
+    </style>
     <style name="MyMaterialTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>

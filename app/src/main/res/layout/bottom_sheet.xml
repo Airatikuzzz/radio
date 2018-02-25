@@ -41,8 +41,8 @@
                 <ImageView
                     android:id="@+id/iv_solo"
 
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
                     android:contentDescription="@string/description_image"
                     android:src="@drawable/blue"
                     android:tag="@string/bb_ref_tag"/>
@@ -58,68 +58,19 @@
                     android:textStyle="bold"/>
 
                 <RelativeLayout
-                    android:id="@+id/linear_volume"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-
-                        android:layout_toLeftOf="@id/seek_bar"
-                        android:src="@drawable/ic_volume"/>
-
-                    <SeekBar
-                        android:id="@+id/seek_bar"
-                        android:layout_width="260dp"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:progressTint="@color/white"
-                        android:thumbTint="@color/colorPrimary"
-                        />
-                </RelativeLayout>
-
-                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <LinearLayout
+
+                    <ImageButton
+                        android:id="@+id/btn_share"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:background="@drawable/border_record"
-                        android:layout_marginRight="30dp"
+                        android:layout_marginRight="40dp"
                         android:layout_toLeftOf="@id/playTrigger1"
-                        android:paddingBottom="7dp"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:paddingTop="7dp">
-
-                        <ImageButton
-                            android:id="@+id/img_btn_record"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@android:color/transparent"
-                            android:src="@drawable/ic_fiber_manual_record_40dp" android:contentDescription="TODO"/>
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="fill_parent"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:background="@color/easy_grey"/>
-
-                        <ImageButton
-                            android:id="@+id/img_btn_record_stop"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@android:color/transparent"
-                            android:src="@drawable/ic_stop_black_30dp"/>
-                    </LinearLayout>
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_share_white_50dp"/>
 
                     <ImageButton
                         android:id="@+id/playTrigger1"

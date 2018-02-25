@@ -102,11 +102,13 @@ public class MainActivity extends AppCompatActivity implements OnItemClickCallba
             ImageButton btnIntoFav;
     @BindView(R.id.btn_into_site)
             Button btnIntoSite;
+    @BindView(R.id.btn_share)
+    ImageButton btnShare;
 
     @BindView(R.id.image_view_sub)
     ImageView mImageViewSub;
 
-    @BindView(R.id.seek_bar)
+    //@BindView(R.id.seek_bar)
     SeekBar mSeekBarVolume;
 
    // @BindView(R.id.bottom_sheet)
@@ -187,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickCallba
         });
 
         mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-        mSeekBarVolume.setMax(mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
+        /*mSeekBarVolume.setMax(mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
         mSeekBarVolume.setProgress(mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
 
         mSeekBarVolume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -205,7 +207,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickCallba
             public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
-        });
+        });*/
     }
 
     @Override
@@ -472,7 +474,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickCallba
     private void startTimerAlarm() {
     }
 
-    @OnClick({R.id.btn_into_fav, R.id.btn_into_site})
+    @OnClick({R.id.btn_into_fav, R.id.btn_into_site, R.id.btn_share})
     public void onClickButtons(View view){
         String action;
         switch (view.getId()){
@@ -493,6 +495,15 @@ public class MainActivity extends AppCompatActivity implements OnItemClickCallba
             case R.id.btn_into_site:
                 Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(mCurrentStation.getInfo()));
                 startActivity(i)    ;
+                break;
+            case R.id.btn_share:
+                Intent i1 = new Intent();
+                i1.setAction(Intent.ACTION_SEND);
+                i1.putExtra(Intent.EXTRA_TEXT,
+                        String.format("Привет, я слушаю %s в этом приложении, скачай ты тоже! %s",
+                        mCurrentStation.getTitle(), "google play url"));
+                i1.setType("text/plain");
+                startActivity(i1);
                 break;
         }
     }
